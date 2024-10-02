@@ -1,0 +1,37 @@
+import unreal
+
+# Set your custom export folder location here (example: "E:/batchexports/")
+export_folder = "Your/Custom/Export/Path/Here"
+
+# Get the subsystem for actors
+actor_subsystem = unreal.EditorActorSubsystem()
+
+# Get all actors in the current level
+all_actors = actor_subsystem.get_all_level_actors()
+
+# Set up export options
+options = unreal.GLTFExportOptions()
+
+# Initialize GLTF export automation task
+gltf_export_task = unreal.AssetExportTask()
+
+# Loop through all actors and export only static mesh actors
+for actor in all_actors:
+    if isinstance(actor, unreal.StaticMeshActor):
+        static_mesh_component = actor.static_mesh_component
+        static_mesh = static_mesh_component.static_mesh
+
+        # Create a unique export file name for each actor
+        actor_name = actor.get_name()
+        export_path = export_folder + actor_name + ".gltf"
+
+        # Configure export task
+        gltf_export_task.object = static_mesh
+        gltf_export_task.filename = export_path
+        gltf_export_task.automated = True
+        gltf_export_task.options = options
+        
+        # Execute the export task
+        unreal.Exporter.run_asset_export_task(gltf_export_task)
+
+print("Static actor export completed.")
