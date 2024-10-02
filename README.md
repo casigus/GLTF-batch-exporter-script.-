@@ -21,6 +21,37 @@ This tool is ideal for developers working on large projects who need efficient, 
 Feel free to modify this as needed, and you can attach it along with the script and instructions for a clear, professional presentation!
 
 
+Instructions for Using the Script:
+Set Up Your Export Path:
+
+In the script, locate this line:
+python
+Copy code
+export_folder = "Your/Custom/Export/Path/Here"
+Replace "Your/Custom/Export/Path/Here" with the path where you want to save the exported .gltf files. For example:
+python
+Copy code
+export_folder = "E:/batchexports/"
+Running the Script:
+
+Open the Unreal Editor.
+Open the Python console by going to Window > Developer Tools > Output Log.
+Paste the entire script into the input field at the bottom of the Output Log window.
+Press Enter to run the script. It will export each static mesh actor from the current level as an individual .gltf file into the specified folder.
+Important Notes:
+
+Ensure that your export folder path ends with a / or \, depending on your operating system.
+The script will only export static mesh actors. Other types of assets or actors will not be exported.
+Make sure to run the script in the correct map or scene to avoid exporting duplicate assets from other maps.
+Customizing:
+
+If you want to modify the export options (e.g., texture coordinates, normals, etc.), you can customize the unreal.GLTFExportOptions() as needed.
+You can expand the script to handle other asset types by adjusting the if isinstance(actor, unreal.StaticMeshActor) line to include additional checks.
+Publishing:
+You can include these instructions along with the script on platforms like GitHub or Unreal Engine forums to make it user-friendly for others!
+
+Let me know if you'd like to tweak anything else before publishing!
+
 
 
 
